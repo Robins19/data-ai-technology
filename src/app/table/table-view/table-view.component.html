@@ -1,0 +1,36 @@
+<div class="table">
+  <form [formGroup]='adminForm'><p>First Name
+    <input type="text" class="form-control" formControlName="searchName" placeholder="Search First Name"
+    style="width:17%;float:right" id="pwd">
+    </p></form>
+<table id="myTable">
+  <tr>
+    <th (click)="sortTable(0)">Id</th>
+    <th (click)="sortTable(0)">First Name</th>
+    <th (click)="sortTable(1)">Last Name</th>
+    <th (click)="sortTable(2)">Company Name</th>
+    <th (click)="sortTable(3)">City</th>
+    <th (click)="sortTable(4)">State</th>
+    <th (click)="sortTable(5)">Zip</th>
+    <th (click)="sortTable(6)">Email</th>
+    <th (click)="sortTable(7)">Web</th>
+    <th (click)="sortTable(8)">Age</th>
+  </tr>
+  <tr *ngFor="let dataOfTable of tableData | firstNameSearchPipe:{searchtext:searchName?.value} | paginate: { itemsPerPage: 5, currentPage: page ,id:'1' }">
+
+     <td   [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.id}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.first_name}}</td >
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.last_name}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.company}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.city}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.state}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.zip}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.email}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.web}}</td>
+      <td [routerLink]="['/view/' +dataOfTable.id]">{{dataOfTable.age}}</td>
+  </tr>
+</table>
+<div class="has-text-centered">
+  <pagination-controls (pageChange)="page = $event" id="1"  directionLinks="true"></pagination-controls>
+</div>
+</div>
